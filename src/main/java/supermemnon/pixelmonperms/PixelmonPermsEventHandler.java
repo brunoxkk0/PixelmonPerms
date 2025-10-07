@@ -28,6 +28,7 @@ public class PixelmonPermsEventHandler {
 
     @Mod.EventBusSubscriber(modid = "pixelmonperms", bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.DEDICATED_SERVER)
     public static class ForgeEvents {
+
         @SubscribeEvent
         public static void registerCommands(RegisterCommandsEvent event) {
             PixelmonPermsCommand.register(event.getDispatcher());
@@ -35,21 +36,8 @@ public class PixelmonPermsEventHandler {
 
     }
 
-    //    @SubscribeEvent(priority = EventPriority.HIGHEST)
-//    public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
-//        PixelmonPerms.getLOGGER().log(Level.INFO, "Interaction!!");
-//        if (event.getEntity() instanceof NPCEntity && InteractionHandler.hasRequiredPermission(event.getEntity())) {
-//            String perm = InteractionHandler.getRequiredPermission(event.getEntity());
-//            PixelmonPerms.getLOGGER().log(Level.INFO, "NPC Interaction!");
-//            if (!PermissionAPI.hasPermission(event.getPlayer(), perm)) {
-//                PixelmonPerms.getLOGGER().log(Level.INFO, "NPC Interaction Cancelled!");
-//                event.getPlayer().sendMessage(new StringTextComponent(InteractionHandler.getCancelMessage(event.getEntity())), null);
-//                event.setCanceled(true);
-//            }
-//        }
-//    }
-
     public static class ModEvents {
+
         @SubscribeEvent(priority = EventPriority.HIGHEST)
         public static void onNPCBattleEvent(NPCEvent.StartBattle event) throws CommandSyntaxException {
             PixelmonPerms.getLOGGER().log(Level.INFO, "NPC BATTLE STARTED");
@@ -66,6 +54,8 @@ public class PixelmonPermsEventHandler {
                 event.setCanceled(true);
             }
         }
+
+
         @SubscribeEvent(priority = EventPriority.HIGHEST)
         public static void onNPCInteractEvent(NPCEvent.Interact event) throws CommandSyntaxException {
             if (!NBTHandler.hasRequiredPermission(event.npc)) {

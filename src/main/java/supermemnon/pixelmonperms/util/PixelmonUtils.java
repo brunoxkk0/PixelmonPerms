@@ -13,11 +13,6 @@ public class PixelmonUtils {
             return;
         }
         List<Dialogue> dialogues = new ArrayList<>();
-//        Dialogue messageDialogue = Dialogue.builder()
-//                                                .setText(message)
-//                                                .setName(npc.getName().getString())
-//                                                .build();
-//        dialogues.add(messageDialogue);
         for (int i = 0; i < messages.length; i++) {
             Dialogue messageDialogue = Dialogue.builder()
                                                 .setText(FormattingHelper.formatWithAmpersand(messages[i]))
